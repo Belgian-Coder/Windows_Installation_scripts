@@ -30,14 +30,14 @@ Lists will contain copied parts from the scripts to make documenting the content
 
 # Contents
 
-- [01_Installation.ps1](#01_installation.ps1)
+- [01_Installation.ps1](#01_installationps1)
   - [Windows 10 configuration](#windows-10-configuration)
   - [Bloatware removal](#bloatware-removal)
   - [Chocolatey](#chocolatey)
   - [Windows features](#windows-features)
   - [Other Installations](#other-installations)
   - [Cleanup and reboot](#cleanup-and-reboot)
-- [02_extensions_and_configuration.ps1](#02_extensions_and_configuration.ps1)
+- [02_extensions_and_configuration.ps1](#02_extensions_and_configurationps1)
   - [Visual Studio Code Extensions](#visual-studio-code-extensions)
   - [WSL configuration](#wsl-configuration)
   - [Tweaks](#tweaks)
@@ -379,7 +379,6 @@ You can enable this by opening Docker Desktop => Settings => Resources => WSL in
 - [x] Set Visual Studio to automatically open in admin mode
 - [x] Set Visual Studio Code to automatically open in admin mode
 - [x] Set Total Commander to automatically open in admin mode
-- [x] Change mouse cursor to show circle when ctrl pressed
 
 ### Windows Defender exclusions
 
