@@ -203,8 +203,8 @@ Write-Title "Setting taskbar buttons to never combine"
 Edit-RegistryValue "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "TaskbarGlomLevel" 2
 
 
-# Show all tray icons
-# -------------------
+# Always show all tray icons
+# --------------------------
 Write-Title "Showing all tray icons"
 Edit-RegistryValue "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" "EnableAutoTray" 0
 
@@ -257,8 +257,8 @@ Write-Title "Hiding shortcut icon arrow"
 Edit-RegistryValue "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons" "29" -Type String -Value "%SystemRoot%\System32\imageres.dll,-1015"
 
 
-# Adjusts visual effects for performance
-# --------------------------------------
+# Adjust visual effects for performance
+# -------------------------------------
 Write-Title "Adjusting visual effects for performance"
 # Edit-RegistryValue -Path "HKCU:\Control Panel\Desktop" -Name "DragFullWindows" -Type String -Value 0
 Edit-RegistryValue -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Type String -Value 0
@@ -270,6 +270,12 @@ Edit-RegistryValue -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explor
 Edit-RegistryValue -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAnimations" -Type DWord -Value 0
 Edit-RegistryValue -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Type DWord -Value 3
 Edit-RegistryValue -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Type DWord -Value 0
+
+
+# Change mouse cursor to show circle when ctrl pressed
+# ----------------------------------------------------
+Write-Title "Enabling find my pointer"
+Edit-RegistryValue -Path "HKCU:\Control Panel\Desktop" -Name "UserPreferencesMask" -Type Binary -Value ([byte[]](0x9E,0x5E,0x07,0x80,0x12,0x00,0x00,0x00))
 
 
 # Show full directory path in Explorer title bar
@@ -284,8 +290,8 @@ Write-Title "Showing protected operating system files..."
 Edit-RegistryValue -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowSuperHidden" -Type DWord -Value 1
 
 
-# Disable Edge preload after Windows startup (non-chromium)
-# ---------------------------------------------------------
+# Disable Edge preload after Windows startup (non-chromium version)
+# -----------------------------------------------------------------
 Write-Title "Disabling Edge preload..."
 Edit-RegistryValue -Path "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main" -Name "AllowPrelaunch" -Type DWord -Value 0
 Edit-RegistryValue -Path "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge\TabPreloader" -Name "AllowTabPreloading" -Type DWord -Value 0

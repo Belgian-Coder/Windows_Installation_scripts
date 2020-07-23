@@ -168,12 +168,6 @@ $totalComanderDir = Get-ItemPropertyValue -Path "Registry::HKEY_LOCAL_MACHINE\SO
 Set-AdminMode $totalComanderDir
 
 
-# Change mouse cursor to show circle when ctrl pressed
-# ----------------------------------------------------
-Write-Title "Enabling find my pointer"
-Edit-RegistryValue -Path "HKCU:\Control Panel\Desktop" -Name "UserPreferencesMask" -Type Binary -Value ([byte[]](0x9E,0x5E,0x07,0x80,0x12,0x00,0x00,0x00))
-
-
 # Windows Defender Exclusions
 # ---------------------------
 
@@ -286,6 +280,7 @@ $processExclusions = @(
     'git-bash.exe',
     'bash.exe',
     'powershell.exe',
+    'wt.exe',
     
     # All of JetBrains stuff
     'JetBrains.EntityFramework.Runner620.exe',
