@@ -30,21 +30,21 @@ Lists will contain copied parts from the scripts to make documenting the content
 
 # Contents
 
-- [01_Installation.ps1](#-01_installation.ps1)
-  - [Windows 10 configuration](#-windows-10-configuration)
-  - [Bloatware removal](#-bloatware-removal)
-  - [Chocolatey](#-chocolatey)
-  - [Windows features](#-windows-features)
-  - [Other Installations](#-other-installations)
-  - [Cleanup and reboot](#-cleanup-and-reboot)
-- [02_extensions_and_configuration.ps1](#-02_extensions_and_configuration.ps1)
-  - [Visual Studio Code Extensions](#-visual-studio-code-extensions)
-  - [WSL configuration](#-wsl-configuration)
-  - [Tweaks](#-tweaks)
-  - [Windows Defender exclusions](#-windows-defender-exclusions)
-    - [Excluded directories](#-excluded-directories)
-    - [Excluded processes](#-excluded-processes)
-    - [WSL specific exclusions](#-wsl-specific-exclusions)
+- [01_Installation.ps1](#01_installation.ps1)
+  - [Windows 10 configuration](#windows-10-configuration)
+  - [Bloatware removal](#bloatware-removal)
+  - [Chocolatey](#chocolatey)
+  - [Windows features](#windows-features)
+  - [Other Installations](#other-installations)
+  - [Cleanup and reboot](#cleanup-and-reboot)
+- [02_extensions_and_configuration.ps1](#02_extensions_and_configuration.ps1)
+  - [Visual Studio Code Extensions](#visual-studio-code-extensions)
+  - [WSL configuration](#wsl-configuration)
+  - [Tweaks](#tweaks)
+  - [Windows Defender exclusions](#windows-defender-exclusions)
+    - [Excluded directories](#excluded-directories)
+    - [Excluded processes](#excluded-processes)
+    - [WSL specific exclusions](#wsl-specific-exclusions)
 
 ## 01_Installation.ps1
 This script will change some basic Windows 10 settings, remove bloatware, install features and install chocolatey with packages, further details below.
