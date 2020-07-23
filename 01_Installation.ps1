@@ -462,7 +462,8 @@ $ChocoPackages = @(
     "obs-virtualcam",
     "eid-belgium",
     "lastpass",
-    "sudo"
+    "sudo",
+    "fontbase"
 )
 
 Write-Title "Installing Applications"
