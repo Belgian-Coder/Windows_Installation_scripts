@@ -146,6 +146,20 @@ wsl --set-default ubuntu-20.04 2
 # NOTE: could be you need to start Ubuntu manually before setting to default!
 
 
+# WSL add memory limitation
+# --------------------------
+Write-Title "Adding WSL memory limitation"
+$virtualDiskPath = "$env:userprofile\wsl2-swap.vhdx" -replace '\\', '\\' # replace for forcing double \\ for config output
+$wsl2ConfigPath = "$env:userprofile\.wslconfig"
+$wsl2Config = @"
+[wsl2]
+memory=8GB
+swapFile=$virtualDiskPath
+"@
+# Write file to location, exisiting file will be overwritten
+$wsl2Config | Out-File -FilePath $wsl2ConfigPath -Encoding ascii
+
+
 # Set Visual Studio to automatically open in admin mode
 # -----------------------------------------------------
 Write-Title "Setting Visual Studio to automatically open in admin mode"
