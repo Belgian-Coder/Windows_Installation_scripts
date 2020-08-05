@@ -368,6 +368,7 @@ The base for our installation was set in the first script. Features were added, 
 ### WSL configuration
 
 - [x] Install new WSL2 kernel
+- [x] Add memory limitation to WSL2, default behavior could use all system memory
 - [x] Set WSL2 as default
 - [x] Install Ubuntu 20.04 WSL
 - [x] Set Ubuntu 20.04 as default WSL distribution
