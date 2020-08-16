@@ -5,7 +5,7 @@ Execute all commands in Powershell, opened in administrator mode. The command st
 
 ````
 // Set policies to unrestricted before running the script 
-Set-ExecutionPolicy unrestricted
+Set-ExecutionPolicy RemoteSigned
 ````
 
 Next step, downloading the scripts. Feel free to examine the contents of the scripts and change whatever you want. 
@@ -17,7 +17,7 @@ The installation scripts will automatically try to elevate themself to run with 
 After executing all scripts, re-enable the execution policy for your own protection to prevent unwanted or malificent scripts from executing. 
 
 ````
-// Change execution policies back or use remote signed 
+// Change execution policies back or keep the policy remote signed for executing unsigned local scripts and signed scripts over network
 Set-ExecutionPolicy RemoteSigned
 ```` 
 
