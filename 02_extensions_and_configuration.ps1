@@ -147,7 +147,7 @@ wsl --set-default ubuntu-20.04 2
 
 
 # WSL add memory limitation
-# --------------------------
+# -------------------------
 Write-Title "Adding WSL memory limitation"
 $virtualDiskPath = "$env:userprofile\wsl2-swap.vhdx" -replace '\\', '\\' # replace for forcing double \\ for config output
 $wsl2ConfigPath = "$env:userprofile\.wslconfig"
@@ -184,7 +184,6 @@ Set-AdminMode $totalComanderDir
 
 # Windows Defender Exclusions
 # ---------------------------
-
 $userPath = $env:USERPROFILE
 
 $pathExclusions = @(
