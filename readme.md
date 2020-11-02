@@ -230,6 +230,7 @@ As a bonus it had the functionality to upgrade already installed applications/pa
 - [x] lastpass
 - [x] sudo
 - [x] fontbase
+- [x] fusion 360
 - [ ] daily package upgrade script => this will update ALL chocolatey packages on a daily base, not recommended for stable systems
 
 ### Windows features

@@ -3,7 +3,7 @@
 ###########
 
 
-"$PSScriptRoot\*" | gci -include '*.psm1' | Import-Module
+"$PSScriptRoot\*" | Get-ChildItem -include '*.psm1' | Import-Module
 
 
 ######################
@@ -411,9 +411,10 @@ if (Find-Command -cmdname 'choco') {
 }
 else {
     Write-Title "Installing Chocolate for Windows..."
-    Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+    Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 }
-
+# Enable automatic EULA acceptance for installing packages
+choco feature enable -n allowGlobalConfirmation
 
 # Install applications through chocolatey
 # ---------------------------------------
@@ -463,7 +464,8 @@ $ChocoPackages = @(
     "eid-belgium",
     "lastpass",
     "sudo",
-    "fontbase"
+    "fontbase",
+    "autodesk-fusion360"
 )
 
 Write-Title "Installing Applications"
