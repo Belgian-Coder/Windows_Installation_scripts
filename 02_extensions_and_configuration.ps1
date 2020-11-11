@@ -460,6 +460,21 @@ if ($wslPaths.Length -gt 0) {
 }
 
 
+########################
+# NODE VERSION MANAGER #
+########################
+
+
+# Install latest Node version
+# ---------------------------
+Write-Title "Installing latest Node version"
+nvm install latest
+nvm List
+Write-Host "Please enter the latest node version from the list ex. 15.2.0 and press enter"
+$nodeVersion = Read-Host
+nvm use $nodeVersion
+
+
 ##########
 # FINISH #
 ##########

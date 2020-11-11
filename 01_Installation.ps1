@@ -421,7 +421,7 @@ choco feature enable -n allowGlobalConfirmation
 $ChocoPackages = @(
     "cuda",
     "git",
-    "nodejs",
+    "nvm.portable",
     "adobereader",
     "googlechrome",
     "jre8",
@@ -446,13 +446,15 @@ $ChocoPackages = @(
     "prusaslicer",
     "rufus",
     "sysinternals",
-    "dotnetcore-sdk",
+    "dotnetcore-sdk", # .Net Core 3.1.x
     "dotnetcore",
     "netfx-4.8-devpack",
     "netfx-4.8",
+    "dotnet-5.0-sdk",
     "sql-server-management-studio",
     "visualstudio2019enterprise",
     #"visualstudio2019professional",
+    "azure-cli",
     "jetbrainstoolbox",
     "anaconda3",
     "vscode",
@@ -465,7 +467,8 @@ $ChocoPackages = @(
     "lastpass",
     "sudo",
     "fontbase",
-    "autodesk-fusion360"
+    "autodesk-fusion360",
+    "geforce-game-ready-driver"
 )
 
 Write-Title "Installing Applications"
@@ -563,12 +566,6 @@ Write-Title "Installing Windows features"
 foreach ($WindowsFeature in $WindowsFeatures) {
     Install-Feature $WindowsFeature
 }
-
-
-# Install Azure CLI
-# -----------------
-Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
-Remove-Item .\AzureCLI.msi
 
 
 # Install Linux Subsystem

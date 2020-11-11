@@ -186,7 +186,7 @@ As a bonus it had the functionality to upgrade already installed applications/pa
 
 - [x] cuda
 - [x] git
-- [x] nodejs
+- [x] ~~nodejs~~ => replaced by nvm (Node version manager)
 - [x] adobereader
 - [x] googlechrome
 - [x] jre8
@@ -211,14 +211,16 @@ As a bonus it had the functionality to upgrade already installed applications/pa
 - [x] prusaslicer
 - [x] rufus
 - [x] sysinternals
-- [x] dotnetcore-sdk
+- [x] dotnetcore-sdk 3.1.x
 - [x] dotnetcore
 - [x] netfx-4.8-devpack
 - [x] netfx-4.8
+- [x] dotnetcore-sdk 5.x
 - [x] sql-server-management-studio
 - [x] visualstudio2019enterprise
 - [ ] visualstudio2019professional
-- [x] jetbrainstoolbox
+- [x] azure-cli
+- [ ] ~~jetbrainstoolbox~~ removed
 - [x] anaconda3
 - [x] vscode
 - [x] typescript
@@ -306,7 +308,6 @@ As a bonus it had the functionality to upgrade already installed applications/pa
 
 ### Other installations
 
-- [x] Azure CLI
 - [x] WSL2
 - [x] Powershell 7.0.3
 
@@ -596,3 +597,7 @@ Windows Defender offers great general protection to us Windows 10 users. Unfortu
 
 Special thanks to Noel Bundick for [this script](https://gist.github.com/noelbundick/9c804a710eb76e1d6a234b14abf42a52). This will stop Windows Defender from scanning WSL files. 
 Scanning WSL files often gives false positives and, at the moment, does not offer any security for Linux systems.
+
+#### Install and select Node version
+
+NVM (Node Version Manager) will be installed in the 1st script. This application will give you the possibility to install and switch between different Node versions. By default the script will install the latest version (Non-LTS). It is possible to install versions by executing NVM install [version number here].
