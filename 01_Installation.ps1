@@ -419,57 +419,64 @@ choco feature enable -n allowGlobalConfirmation
 # Install applications through chocolatey
 # ---------------------------------------
 $ChocoPackages = @(
-    "cuda",
-    "git",
-    "nvm.portable",
-    "adobereader",
-    "googlechrome",
-    "jre8",
-    "firefox",
     "7zip.install",
-    "notepadplusplus.install",
-    "wget",
-    "openssl.light",
+    "adobereader",
+    "anaconda3",
+    "azure-cli",
+    "blender",
+    "cuda",
+    "docker-desktop",
+    "dotnet-5.0-sdk",
+    "dotnetcore-sdk", # .Net Core 3.1.x
+    "dotnetcore",
+    "eid-belgium",
     "fiddler",
-    "microsoft-teams.install",
-    "microsoft-edge",
-    "powertoys",
+    "firefox",
+    "fontbase",
+    "geforce-game-ready-driver",
+    "git",
+    "googlechrome",
+    "jmeter",
+    "jre8",
     "k-litecodecpackmega",
+    "lastpass",
+    "microsoft-edge",
+    "microsoft-teams.install",
+    "microsoft-windows-terminal",
+    "microsoftazurestorageexplorer",
     "mobaxterm",
+    "netfx-4.8-devpack",
+    "netfx-4.8",
+    "notepadplusplus.install",
+    "nvm.portable",
+    "obs-move-transition",
+    "obs-studio",
+    "obs-virtualcam",
+    "openssl.light",
+    "postman",
+    "powertoys",
+    "prusaslicer",
+    "rufus",
     "sharex",
     "slack",
     "sourcetree",
-    "postman",
-    "docker-desktop",
-    "totalcommander",
-    "whatsapp",
-    "prusaslicer",
-    "rufus",
-    "sysinternals",
-    "dotnetcore-sdk", # .Net Core 3.1.x
-    "dotnetcore",
-    "netfx-4.8-devpack",
-    "netfx-4.8",
-    "dotnet-5.0-sdk",
+    "spotify",
     "sql-server-management-studio",
-    "visualstudio2019enterprise",
-    #"visualstudio2019professional",
-    "azure-cli",
-    "jetbrainstoolbox",
-    "anaconda3",
-    "vscode",
-    "typescript",
-    "microsoft-windows-terminal",
-    "blender",
-    "obs-studio",
-    "obs-virtualcam",
-    "eid-belgium",
-    "lastpass",
     "sudo",
-    "fontbase",
-    "autodesk-fusion360",
-    "geforce-game-ready-driver"
+    "sysinternals",
+    "totalcommander",
+    "typescript",
+    "visualstudio2019enterprise",
+    "vscode",
+    "wget",
+    "nswagstudio",
+    "p4merge",
+    "whatsapp"
+    #"visualstudio2019community",
+    #"visualstudio2019professional",
 )
+
+
 
 Write-Title "Installing Applications"
 foreach ($ChocoPackage in $ChocoPackages) {
@@ -582,8 +589,8 @@ Install-Feature "VirtualMachinePlatform"
 
 # Update Powershell
 # -----------------
-Invoke-WebRequest -Uri https://github.com/PowerShell/PowerShell/releases/download/v7.0.3/PowerShell-7.0.3-win-x64.msi -OutFile .\PS7.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I PS7.msi /quiet'
-Remove-Item .\PS7.msi
+Invoke-WebRequest -Uri https://github.com/PowerShell/PowerShell/releases/download/v7.1.2/PowerShell-7.1.2-win-x64.msi -OutFile .\PS.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I PS7.msi /quiet'
+Remove-Item .\PS.msi
 
 
 # ======== #

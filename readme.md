@@ -30,21 +30,24 @@ Lists will contain copied parts from the scripts to make documenting the content
 
 # Contents
 
-- [01_Installation.ps1](#01_installationps1)
-  - [Windows 10 configuration](#windows-10-configuration)
-  - [Bloatware removal](#bloatware-removal)
-  - [Chocolatey](#chocolatey)
-  - [Windows features](#windows-features)
-  - [Other Installations](#other-installations)
-  - [Cleanup and reboot](#cleanup-and-reboot)
-- [02_extensions_and_configuration.ps1](#02_extensions_and_configurationps1)
-  - [Visual Studio Code Extensions](#visual-studio-code-extensions)
-  - [WSL configuration](#wsl-configuration)
-  - [Tweaks](#tweaks)
-  - [Windows Defender exclusions](#windows-defender-exclusions)
-    - [Excluded directories](#excluded-directories)
-    - [Excluded processes](#excluded-processes)
-    - [WSL specific exclusions](#wsl-specific-exclusions)
+- [Getting started](#getting-started)
+- [Contents](#contents)
+  - [01_Installation.ps1](#01_installationps1)
+    - [Windows 10 configuration](#windows-10-configuration)
+    - [Bloatware removal](#bloatware-removal)
+    - [Chocolatey](#chocolatey)
+    - [Windows features](#windows-features)
+    - [Other installations](#other-installations)
+    - [Cleanup and reboot](#cleanup-and-reboot)
+  - [02_extensions_and_configuration.ps1](#02_extensions_and_configurationps1)
+    - [Visual Studio Code extensions](#visual-studio-code-extensions)
+    - [WSL configuration](#wsl-configuration)
+    - [Tweaks](#tweaks)
+    - [Windows Defender exclusions](#windows-defender-exclusions)
+      - [Excluded directories](#excluded-directories)
+      - [Excluded processes](#excluded-processes)
+      - [WSL specific exclusions](#wsl-specific-exclusions)
+      - [Install and select Node version](#install-and-select-node-version)
 
 ## 01_Installation.ps1
 This script will change some basic Windows 10 settings, remove bloatware, install features and install chocolatey with packages, further details below.
@@ -184,56 +187,63 @@ Remove UWP apps and games that could be installed by default. These packages are
 [Chocolatey](https://chocolatey.org/) is a free utility that can help you installing packaged applications. It will make the installation of quite a few apps very easy in a manageable fashion. 
 As a bonus it had the functionality to upgrade already installed applications/packages. List of Chocolatey packages in no particular order: 
 
-- [x] cuda
-- [x] git
+- [ ] ~~fusion 360~~ removed => does not delete older version on update, this causes multiple versions on you storage at the same time
+- [ ] ~~jetbrainstoolbox~~ removed
+- [ ] daily package upgrade script => this will update ALL chocolatey packages on a daily base, not recommended for stable systems
+- [ ] visualstudio2019community
+- [ ] visualstudio2019professional
 - [x] ~~nodejs~~ => replaced by nvm (Node version manager)
-- [x] adobereader
-- [x] googlechrome
-- [x] jre8
-- [x] firefox
 - [x] 7zip.install
-- [x] notepadplusplus.install
-- [x] wget
-- [x] openssl.light
+- [x] adobereader
+- [x] anaconda3
+- [x] azure-cli
+- [x] blender
+- [x] cuda
+- [x] docker-desktop
+- [x] dotnetcore
+- [x] dotnetcore-sdk 3.1.x
+- [x] dotnetcore-sdk 5.x
+- [x] eid-belgium
 - [x] fiddler
-- [x] microsoft-teams.install
-- [x] microsoft-edge => Chromium based
-- [x] powertoys
+- [x] firefox
+- [x] fontbase
+- [x] git
+- [x] googlechrome
+- [x] jmeter
+- [x] jre8
 - [x] k-litecodecpackmega
+- [x] lastpass
+- [x] microsoft-edge => Chromium based
+- [x] microsoft-teams.install
+- [x] microsoft-windows-terminal
 - [x] mobaxterm
+- [x] netfx-4.8
+- [x] netfx-4.8-devpack
+- [x] notepadplusplus.install
+- [x] nvm
+- [x] obs-move-transition
+- [x] obs-studio
+- [x] obs-virtualcam
+- [x] openssl.light
+- [x] postman
+- [x] powertoys
+- [x] prusaslicer
+- [x] rufus
 - [x] sharex
 - [x] slack
 - [x] sourcetree
-- [x] postman
-- [x] docker-desktop
-- [x] totalcommander
-- [x] whatsapp
-- [x] prusaslicer
-- [x] rufus
-- [x] sysinternals
-- [x] dotnetcore-sdk 3.1.x
-- [x] dotnetcore
-- [x] netfx-4.8-devpack
-- [x] netfx-4.8
-- [x] dotnetcore-sdk 5.x
 - [x] sql-server-management-studio
-- [x] visualstudio2019enterprise
-- [ ] visualstudio2019professional
-- [x] azure-cli
-- [ ] ~~jetbrainstoolbox~~ removed
-- [x] anaconda3
-- [x] vscode
-- [x] typescript
-- [x] microsoft-windows-terminal
-- [x] blender
-- [x] obs-studio
-- [x] obs-virtualcam
-- [x] eid-belgium
-- [x] lastpass
 - [x] sudo
-- [x] fontbase
-- [x] fusion 360
-- [ ] daily package upgrade script => this will update ALL chocolatey packages on a daily base, not recommended for stable systems
+- [x] sysinternals
+- [x] totalcommander
+- [x] typescript
+- [x] visualstudio2019enterprise
+- [x] vscode
+- [x] wget
+- [x] whatsapp
+- [x] nswagstudio
+- [x] p4merge
+- [x] spotify
 
 ### Windows features
 
@@ -309,7 +319,7 @@ As a bonus it had the functionality to upgrade already installed applications/pa
 ### Other installations
 
 - [x] WSL2
-- [x] Powershell 7.0.3
+- [x] Powershell 7.1.2
 
 ### Cleanup and reboot
 
@@ -325,33 +335,38 @@ The base for our installation was set in the first script. Features were added, 
 ### Visual Studio Code extensions
 
 - [x] .NET Core extension pack
+- [x] AKS extension for debugging microservices
 - [x] Angular extension pack
 - [x] Azure account management
-- [x] AKS extension for debugging microservices
 - [x] Azure kubernetes service
+- [x] Azure static web apps
 - [x] Azure tools extension pack
-- [x] C# compiler
+- [x] Bracket pair colorizer 2
+- [x] Bridge to Kubernetes for debugging MicroServices
 - [x] C# extensions (refactorings)
 - [x] Chrome debugger
-- [x] Convert csharp to typescript
 - [x] Colorize comments
-- [x] Colorize brackets
+- [x] Convert csharp to typescript
 - [x] CSS peek
 - [x] Docker extension pack
 - [x] Draw.io integration
 - [x] Excel viewer, opens Excel and CSV files as a table
 - [x] Firefox debugger
 - [x] GitLens
-- [x] Import cost, shows size of imports for JS and TS
-- [x] JSON to TS
+- [x] Jupyter notebooks
 - [x] Kubernetes extension
 - [x] Kubernetes pod file system explorer
 - [x] Kubernetes template snippets
 - [x] Live server
 - [x] Live share extension pack
+- [x] Markdown All in One
+- [x] Markdown Preview Enhanced
 - [x] Microsoft Edge debugger
 - [x] Move TS, add move functionality that updates imports
+- [x] Node Essentials
+- [x] Node.js extension pack
 - [x] NPM extension
+- [x] Partial Diff
 - [x] Paste JSON as Code
 - [x] Powershell scripting extension
 - [x] Prettier code formatter
@@ -360,7 +375,9 @@ The base for our installation was set in the first script. Features were added, 
 - [x] Remote development pack
 - [x] REST client
 - [x] Settings sync, save VS code settings to github
+- [x] Sort lines
 - [x] SQL server extension
+- [x] Test Explorer UI
 - [x] Typescript extension pack
 - [x] Visual studio codespaces
 - [x] Visual Studio intellicode

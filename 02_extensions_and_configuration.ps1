@@ -30,16 +30,16 @@ $extensions = @(
     "doggy8088.angular-extension-pack",
     # Azure account management
     "ms-vscode.azure-account",
-    # AKS extension for debugging microservices
-    "azuredevspaces.azds",
     # Azure kubernetes service
     "ms-kubernetes-tools.vscode-aks-tools",
     # Azure tools extension pack
     "ms-vscode.vscode-node-azure-pack",
-    # C#
-    "ms-dotnettools.csharp",
+    # Azure static web apps
+    "ms-azuretools.vscode-azurestaticwebapps",
+    # Bridge to Kubernetes for debugging MicroServices
+    "mindaro.mindaro",
     # C# extensions (refactorings)
-    "jchannon.csharpextensions",
+    "kreativ-software.csharpextensions",
     # Chrome debugger
     "msjsdiag.debugger-for-chrome",
     # Convert csharp to typescript
@@ -60,10 +60,8 @@ $extensions = @(
     "firefox-devtools.vscode-firefox-debug",
     # GitLens
     "eamodio.gitlens",
-    # Import cost, shows size of imports for JS and TS
-    "wix.vscode-import-cost",
-    # JSON to TS
-    "mariusalchimavicius.json-to-ts",
+    # Jupyter notebooks
+    "ms-toolsai.jupyte",
     # Kubernetes extension
     "ms-kubernetes-tools.vscode-kubernetes-tools",
     # Kubernetes pod file system explorer
@@ -74,12 +72,22 @@ $extensions = @(
     "ritwickdey.liveserver",
     # Live share extension pack
     "MS-vsliveshare.vsliveshare-pack",
+    # Markdown All in One
+    "yzhang.markdown-all-in-one",
+    # Markdown Preview Enhanced
+    "shd101wyy.markdown-preview-enhanced",
     # Microsoft Edge debugger
     "msjsdiag.debugger-for-edge",
     # Move TS, add move functionality that updates imports
     "stringham.move-ts",
+    # Node Essentials
+    "afractal.node-essentials",
+    # Node.js extension pack
+    "waderyan.nodejs-extension-pack",
     # NPM extension
     "eg2.vscode-npm-script",
+    # Partial Diff
+    "ryu1kn.partial-diff",
     # Paste JSON as Code
     "quicktype.quicktype",
     # Powershell scripting extension
@@ -96,8 +104,12 @@ $extensions = @(
     "humao.rest-client",
     # Settings sync, save VS code settings to github
     "shan.code-settings-sync",
+    # Sort lines
+    "Tyriar.sort-lines",
     # SQL server extension
     "ms-mssql.mssql",
+    # Test Explorer UI
+    "hbenl.vscode-test-explorer",
     # Typescript extension pack
     "loiane.ts-extension-pack",
     # Visual studio codespaces
