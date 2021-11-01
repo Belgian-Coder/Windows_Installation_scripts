@@ -5,14 +5,13 @@ Execute all commands in Powershell, opened in administrator mode. The command st
 
 ````
 // Set policies to unrestricted before running the script 
-Set-ExecutionPolicy RemoteSigned
+Set-ExecutionPolicy Unrestricted
 ````
 
 Next step, downloading the scripts. Feel free to examine the contents of the scripts and change whatever you want. 
-You will need to place the `functions.psm1` file, that includes helper functions, in the same directory as the other scripts. 
 
 To execute a script, navigate to the folder where you extracted all files and just use the filename precedeed with `.\`. For example, `.\01_Installation` followed by the enter key. 
-The installation scripts will automatically try to elevate themself to run with administrator permissons. You will get the best experience running Powershell in admin mode. 
+The installation scripts will automatically try to elevate themself to run with administrator permissons. You will get the best experience running Powershell in admin/elevated mode. 
 
 After executing all scripts, re-enable the execution policy for your own protection to prevent unwanted or malificent scripts from executing. 
 
@@ -32,14 +31,13 @@ Lists will contain copied parts from the scripts to make documenting the content
 
 - [Getting started](#getting-started)
 - [Contents](#contents)
-  - [01_Installation.ps1](#01_installationps1)
-    - [Windows 10 configuration](#windows-10-configuration)
-    - [Bloatware removal](#bloatware-removal)
+  - [SophiaScriptWrapper.exe](#SophiaScriptWrapperexe)
+  - [tweaks_and_packages.ps1](#tweaks_and_packagesps1)
+    - [Windows configuration](#windows-10-configuration)
     - [Chocolatey](#chocolatey)
-    - [Windows features](#windows-features)
     - [Other installations](#other-installations)
     - [Cleanup and reboot](#cleanup-and-reboot)
-  - [02_extensions_and_configuration.ps1](#02_extensions_and_configurationps1)
+  - [extensions_and_configuration.ps1](#extensions_and_configurationps1)
     - [Visual Studio Code extensions](#visual-studio-code-extensions)
     - [WSL configuration](#wsl-configuration)
     - [Tweaks](#tweaks)
@@ -49,176 +47,65 @@ Lists will contain copied parts from the scripts to make documenting the content
       - [WSL specific exclusions](#wsl-specific-exclusions)
       - [Install and select Node version](#install-and-select-node-version)
 
-## 01_Installation.ps1
+
+## SophiaScriptWrapper.exe
+
+A lot of the previous tweaks were removed from the scripts because of this wonderfull project. Not only adds this project lots of additional options, it also has the possibility to create different profiles with different settings. 
+
+One of the options that didn't work properly, was the WSL installation. It installed the correct Windows features, downloaded the linux distribution of choice and even looked like it was installing. Unfortunately, my system did not detect the distribution and I needed to install it again.
+
+Even without this function, the Sophia Script has alot of nice features and good maintenance with regular updates. You can find the [Sophia script repository](https://github.com/farag2/Sophia-Script-for-Windows) with instructions here.
+
+
+## tweaks_and_packages.ps1
 This script will change some basic Windows 10 settings, remove bloatware, install features and install chocolatey with packages, further details below.
 
-### Windows 10 configuration
+### Windows configuration
 
-- [x] Rename computer based on user input
-- [x] Disable standby and change monitor timeout to 60 seconds
-- [x] Disable user account control notifications (open applications in admin mode without prompt)
-- [x] Disable Telemetry
-- [x] Disable user activity tracking
-- [x] Disable Bing search in start menu
-- [x] Remove people icon from taskbar
-- [x] Disable Advertising ID => no advertisements based on sites you visit
-- [x] Disable Windows GameDVR
-- [x] Disable Windows Update Automatic restart
-- [x] Disable Windows update network seeding
-- [x] Disable Edge desktop shortcut on new profiles
-- [x] Remove edge shortcut from desktop
-- [x] Restore old volume slider with application volume control
 - [x] Change Windows explorer options
- - [x] Show hidden files
- - [x] Always show file extensions
- - [x] Change default explorer view from 'Quick Access' to 'This PC'
  - [x] Remove 'Music' from libraries
  - [x] Remove 'Videos' from libraries
- - [x] Remove '3D Objects' from libraries
- - [x] Disable recent files in 'Quick Access' view
- - [x] Disable frequent folders in 'Quick Access' view
 - [x] Enable mapped drive sharing between users => mapped drives will be available to new user profiles
 - [x] Set current network profile to private (allow file sharing, device discovery, etc.)
-- [x] Change Windows to Dark Theme
 - [x] Enable Remote Desktop w/o Network Level Authentication
-- [ ] Disable Hibernation => Use this for always on desktops or home servers
-- [x] Hide search box/icon from task bar
-- [x] Hide Task View button
-- [x] Show small icons in taskbar
-- [x] Set taskbar buttons to show labels and never combine
-- [x] Always show all tray icons
+- [x] Show small icons in taskbar => only Windows 10
+- [x] Set small taskbar => Windows 11
+- [x] Set taskbar buttons to show labels and never combine => only Windows 10
+- [x] Always show all tray icons => only Windows 10
 - [x] Disable search for app in store for unknown extensions
-- [x] Enable NumLock after startup
-- [ ] Disable offering of drivers through Windows Update
-- [x] Enable NTFS paths with length over 260 characters
-- [x] Disable adding '- shortcut' to shortcut name
 - [x] Hide shortcut icon arrow
 - [x] Adjust visual effects for performance
 - [x] Change mouse cursor to show circle when ctrl pressed
 - [x] Show full directory path in Explorer title bar
 - [x] Show protected operating system files
-- [x] Disable Edge preload after Windows startup (non-chromium version)
 - [x] Uninstall Microsoft XPS Document Writer
 - [x] Enable Windows 10 Developer mode
 
-### Bloatware removal
-
-Remove UWP apps and games that could be installed by default. These packages are different between Windows builds and vendors. List of package names that will be removed if found: 
-
-- [x] 2414FC7A.Viber
-- [x] 41038Axilesoft.ACGMediaPlayer
-- [x] 46928bounde.EclipseManager
-- [x] 4DF9E0F8.Netflix
-- [x] 64885BlueEdge.OneCalendar
-- [x] 7EE7776C.LinkedInforWindows
-- [x] 828B5831.HiddenCityMysteryofShadows
-- [x] 89006A2E.AutodeskSketchBook
-- [x] 9E2F88E3.Twitter
-- [x] A278AB0D.DisneyMagicKingdoms
-- [x] A278AB0D.DragonManiaLegends
-- [x] A278AB0D.MarchofEmpires
-- [x] ActiproSoftwareLLC.562882FEEB491
-- [x] AD2F1837.GettingStartedwithWindows8
-- [x] AD2F1837.HPJumpStart
-- [x] AD2F1837.HPRegistration
-- [x] AdobeSystemsIncorporated.AdobePhotoshopExpress
-- [x] Amazon.com.Amazon
-- [x] C27EB4BA.DropboxOEM
-- [x] CAF9E577.Plex
-- [x] CyberLinkCorp.hs.PowerMediaPlayer14forHPConsumerPC
-- [x] D52A8D61.FarmVille2CountryEscape
-- [x] D5EA27B7.Duolingo-LearnLanguagesforFree
-- [x] DB6EA5DB.CyberLinkMediaSuiteEssentials
-- [x] DolbyLaboratories.DolbyAccess
-- [x] Drawboard.DrawboardPDF
-- [x] Facebook.Facebook
-- [x] Fitbit.FitbitCoach
-- [x] flaregamesGmbH.RoyalRevolt2
-- [x] GAMELOFTSA.Asphalt8Airborne
-- [x] KeeperSecurityInc.Keeper
-- [x] king.com.BubbleWitch3Saga
-- [x] king.com.CandyCrushFriends
-- [x] king.com.CandyCrushSaga
-- [x] king.com.CandyCrushSodaSaga
-- [x] king.com.FarmHeroesSaga
-- [x] Nordcurrent.CookingFever
-- [x] PandoraMediaInc.29680B314EFC2
-- [x] PricelinePartnerNetwork.Booking.comBigsavingsonhot
-- [x] ThumbmunkeysLtd.PhototasticCollage
-- [x] WinZipComputing.WinZipUniversal
-- [x] XINGAG.XING
-- [x] Microsoft.BingFinance
-- [x] Microsoft.BingFoodAndDrink
-- [x] Microsoft.BingHealthAndFitness
-- [x] Microsoft.BingMaps
-- [x] Microsoft.BingNews
-- [x] Microsoft.BingSports
-- [x] Microsoft.BingTranslator
-- [x] Microsoft.BingTravel
-- [x] Microsoft.CommsPhone
-- [x] Microsoft.ConnectivityStore
-- [x] Microsoft.FreshPaint
-- [x] Microsoft.GetHelp
-- [x] Microsoft.Getstarted
-- [x] Microsoft.HelpAndTips
-- [x] Microsoft.Messaging
-- [x] Microsoft.Microsoft3DViewer
-- [x] Microsoft.MicrosoftOfficeHub
-- [x] Microsoft.MicrosoftPowerBIForWindows
-- [x] Microsoft.MicrosoftSolitaireCollection
-- [x] Microsoft.MicrosoftStickyNotes
-- [x] Microsoft.MinecraftUWP
-- [x] Microsoft.MoCamera
-- [x] Microsoft.NetworkSpeedTest
-- [x] Microsoft.Office.Sway
-- [x] Microsoft.People
-- [x] Microsoft.SkypeApp
-- [x] Microsoft.Wallet
-- [x] Microsoft.WindowsCamera
-- [x] Microsoft.WindowsFeedbackHub
-- [x] Microsoft.WindowsMaps
-- [x] Microsoft.WindowsPhone
-- [x] Microsoft.XboxGamingOverlay
-- [x] Microsoft.ZuneMusic
-- [x] Microsoft.ZuneVideo
 
 ### Chocolatey
 
 [Chocolatey](https://chocolatey.org/) is a free utility that can help you installing packaged applications. It will make the installation of quite a few apps very easy in a manageable fashion. 
 As a bonus it had the functionality to upgrade already installed applications/packages. List of Chocolatey packages in no particular order: 
 
-- [ ] ~~fusion 360~~ removed => does not delete older version on update, this causes multiple versions on you storage at the same time
-- [ ] ~~jetbrainstoolbox~~ removed
-- [ ] daily package upgrade script => this will update ALL chocolatey packages on a daily base, not recommended for stable systems
-- [ ] visualstudio2019community
-- [ ] visualstudio2019professional
-- [x] ~~nodejs~~ => replaced by nvm (Node version manager)
 - [x] 7zip.install
 - [x] adobereader
 - [x] anaconda3
 - [x] azure-cli
-- [x] blender
+- [x] azure-data-studio
 - [x] cuda
 - [x] docker-desktop
-- [x] dotnetcore
-- [x] dotnetcore-sdk 3.1.x
-- [x] dotnetcore-sdk 5.x
 - [x] eid-belgium
 - [x] fiddler
-- [x] firefox
 - [x] fontbase
+- [x] geforce-game-ready-driver
 - [x] git
 - [x] googlechrome
 - [x] jmeter
 - [x] jre8
 - [x] k-litecodecpackmega
 - [x] lastpass
-- [x] microsoft-edge => Chromium based
-- [x] microsoft-teams.install
-- [x] microsoft-windows-terminal
+- [x] microsoftazurestorageexplorer
 - [x] mobaxterm
-- [x] netfx-4.8
-- [x] netfx-4.8-devpack
 - [x] notepadplusplus.install
 - [x] nvm
 - [x] obs-move-transition
@@ -227,99 +114,27 @@ As a bonus it had the functionality to upgrade already installed applications/pa
 - [x] openssl.light
 - [x] postman
 - [x] powertoys
-- [x] prusaslicer
 - [x] rufus
 - [x] sharex
 - [x] slack
 - [x] sourcetree
+- [x] spotify
 - [x] sql-server-management-studio
-- [x] sudo
-- [x] sysinternals
 - [x] totalcommander
 - [x] typescript
 - [x] visualstudio2019enterprise
 - [x] vscode
 - [x] wget
-- [x] whatsapp
 - [x] nswagstudio
 - [x] p4merge
-- [x] spotify
+- [x] powershell
+- [x] whatsapp
 
-### Windows features
-
-- [x] IIS-ODBCLogging
-- [x] IIS-IISCertificateMappingAuthentication
-- [x] IIS-ClientCertificateMappingAuthentication
-- [x] IIS-DigestAuthentication
-- [x] HypervisorPlatform
-- [x] Containers
-- [x] Microsoft-Hyper-V-Management-Clients
-- [x] Microsoft-Hyper-V-Services
-- [x] Microsoft-Hyper-V-Hypervisor
-- [x] Microsoft-Hyper-V-Management-PowerShell
-- [x] Microsoft-Hyper-V-Tools-All
-- [x] Microsoft-Hyper-V
-- [x] Microsoft-Hyper-V-All
-- [x] Containers-DisposableClientVM
-- [x] IIS-RequestMonitor
-- [x] IIS-HttpTracing
-- [x] IIS-URLAuthorization
-- [x] IIS-IPSecurity
-- [x] IIS-LegacySnapIn
-- [x] IIS-LegacyScripts
-- [x] IIS-WMICompatibility
-- [x] IIS-CustomLogging
-- [x] IIS-CGI
-- [x] IIS-ASP
-- [x] IIS-ASPNET
-- [x] IIS-WebDAV
-- [x] IIS-FTPSvc
-- [x] IIS-HostableWebCore
-- [x] IIS-Metabase
-- [x] IIS-IIS6ManagementCompatibility
-- [x] IIS-ManagementScriptingTools
-- [x] IIS-DefaultDocument
-- [x] IIS-DirectoryBrowsing
-- [x] IIS-WebSockets
-- [x] IIS-ApplicationInit
-- [x] IIS-ASPNET45
-- [x] IIS-ISAPIExtensions
-- [x] IIS-ISAPIFilter
-- [x] IIS-ServerSideIncludes
-- [x] IIS-BasicAuthentication
-- [x] IIS-StaticContent
-- [x] IIS-HttpCompressionStatic
-- [x] IIS-ManagementService
-- [x] IIS-CertProvider
-- [x] IIS-WindowsAuthentication
-- [x] MediaPlayback
-- [x] SmbDirect
-- [x] IIS-ManagementConsole
-- [x] Microsoft-Windows-Subsystem-Linux
-- [x] IIS-WebServerManagementTools
-- [x] IIS-Performance
-- [x] MSRDC-Infrastructure
-- [x] NetFx4-AdvSrvs
-- [x] NetFx4Extended-ASPNET45
-- [x] WCF-Services45
-- [x] IIS-HttpCompressionDynamic
-- [x] WCF-TCP-PortSharing45
-- [x] IIS-WebServer
-- [x] IIS-CommonHttpFeatures
-- [x] IIS-HttpErrors
-- [x] IIS-ApplicationDevelopment
-- [x] IIS-NetFxExtensibility45
-- [x] IIS-HealthAndDiagnostics
-- [x] IIS-HttpLogging
-- [x] IIS-Security
-- [x] IIS-RequestFiltering
-- [x] IIS-WebServerRole
-- [x] VirtualMachinePlatform
 
 ### Other installations
 
 - [x] WSL2
-- [x] Powershell 7.1.2
+
 
 ### Cleanup and reboot
 
@@ -328,9 +143,12 @@ As a bonus it had the functionality to upgrade already installed applications/pa
 - [x] Unpin all Taskbar icons
 - [x] Reboot computer after installation
 
-## 02_extensions_and_configuration.ps1
+
+
+## extensions_and_configuration.ps1
 
 The base for our installation was set in the first script. Features were added, applications installed, bloatwere removed... Time to dot the I's and cross the T's.
+
 
 ### Visual Studio Code extensions
 
@@ -392,6 +210,11 @@ The base for our installation was set in the first script. Features were added, 
 - [x] Install Ubuntu 20.04 WSL
 - [x] Set Ubuntu 20.04 as default WSL distribution
 
+After this script is finished and Ubuntu for WSL is installed, start Ubuntu from start menu and create an account. When finished, open Powershell and execute: 
+````
+wsl --set-default ubuntu-20.04 2
+````
+
 Unfortunately, I could not find how to automatically enable the Ubuntu distribution in Docker to combine it with the Docker WSL2 backend.
 You can enable this by opening Docker Desktop => Settings => Resources => WSL integration. Enable the option `Enable integration with my default WSL distro` and toggle the Ubuntu distribution on in the same screen.  
 
@@ -400,6 +223,7 @@ You can enable this by opening Docker Desktop => Settings => Resources => WSL in
 - [x] Set Visual Studio to automatically open in admin mode
 - [x] Set Visual Studio Code to automatically open in admin mode
 - [x] Set Total Commander to automatically open in admin mode
+- [x] Create Windows Terminal Desktop Shortcut with admin priveleges
 
 ### Windows Defender exclusions
 
@@ -432,6 +256,7 @@ Windows Defender offers great general protection to us Windows 10 users. Unfortu
  - [x] Project paths => change this to your own project paths
    - [x] C:\\_sync 
    - [x] C:\\_projects
+   - [x] D:\\
 
 #### Excluded processes
 
