@@ -1,6 +1,6 @@
 # Getting started
 
-Before executing any scripts be aware that you do this on your own risk and the author does not take any responsibility. All scripts were tested on Windows 10 Enterprise build 2004. 
+Before executing any scripts be aware that you do this on your own risk and the author does not take any responsibility. All scripts were tested on Windows 11 20H2. 
 Execute all commands in Powershell, opened in administrator mode. The command stated below will asure you have the necessary permissions to execute the installation scripts. 
 
 ````
@@ -58,7 +58,7 @@ Even without this function, the Sophia Script has alot of nice features and good
 
 
 ## tweaks_and_packages.ps1
-This script will change some basic Windows 10 settings, remove bloatware, install features and install chocolatey with packages, further details below.
+This script will change some basic Windows settings, remove bloatware, install features and install chocolatey with packages, further details below.
 
 ### Windows configuration
 
@@ -79,7 +79,7 @@ This script will change some basic Windows 10 settings, remove bloatware, instal
 - [x] Show full directory path in Explorer title bar
 - [x] Show protected operating system files
 - [x] Uninstall Microsoft XPS Document Writer
-- [x] Enable Windows 10 Developer mode
+- [x] Enable Windows Developer mode
 
 
 ### Chocolatey
@@ -227,7 +227,7 @@ You can enable this by opening Docker Desktop => Settings => Resources => WSL in
 
 ### Windows Defender exclusions
 
-Windows Defender offers great general protection to us Windows 10 users. Unfortunately, it can get in the way when developing applications.  
+Windows Defender offers great general protection to us Windows users. Unfortunately, it can get in the way when developing applications.  
 
 #### Excluded directories
 
