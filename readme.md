@@ -31,9 +31,9 @@ Lists will contain copied parts from the scripts to make documenting the content
 
 - [Getting started](#getting-started)
 - [Contents](#contents)
-  - [SophiaScriptWrapper.exe](#SophiaScriptWrapperexe)
+  - [SophiaScriptWrapper.exe](#sophiascriptwrapperexe)
   - [tweaks_and_packages.ps1](#tweaks_and_packagesps1)
-    - [Windows configuration](#windows-10-configuration)
+    - [Windows configuration](#windows-configuration)
     - [Chocolatey](#chocolatey)
     - [Other installations](#other-installations)
     - [Cleanup and reboot](#cleanup-and-reboot)
@@ -123,6 +123,7 @@ As a bonus it had the functionality to upgrade already installed applications/pa
 - [x] totalcommander
 - [x] typescript
 - [x] visualstudio2019enterprise
+- [x] visualstudio2022enterprise
 - [x] vscode
 - [x] wget
 - [x] nswagstudio

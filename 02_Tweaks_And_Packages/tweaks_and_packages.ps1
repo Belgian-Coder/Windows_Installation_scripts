@@ -187,6 +187,7 @@ $ChocoPackages = @(
     "totalcommander",
     "typescript",
     "visualstudio2019enterprise",
+    "visualstudio2022enterprise"
     "vscode",
     "wget",
     "nswagstudio",
